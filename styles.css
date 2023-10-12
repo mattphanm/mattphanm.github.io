@@ -1,0 +1,159 @@
+p#first{
+    font-size: 25px;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+p{
+    justify-content: center;
+    text-align: center;
+    color: black;
+}
+
+
+/*for class */
+.About {
+    background-color: #E1DCD9;
+    font-size: 150%;
+
+}
+#lists{
+    width: 400px; 
+	margin-left: auto; 
+	margin-right: auto; 
+}
+
+#positions-lists{
+    text-align: center;
+    width: 400px; 
+	margin-left: auto; 
+	margin-right: auto; 
+}
+
+#goals{
+    margin-left: 2%;
+}
+
+#image{
+    width: 100%;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.about-image{
+    margin-left: 27%;
+    border-radius: 105px;
+    border-color: darkblue;
+    border-style: solid;
+    display: inline-block;   
+    margin-top: 2%; 
+}
+
+.Footer{
+    color: white;
+    justify-content: center; 
+    display: flex;
+    align-items: center;
+    font-weight: 50%;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: black;
+    padding: 10px 10px 10px 10px;
+}
+/* for tags*/
+#first {
+    font-size: 25px;
+    text-decoration: underline;
+}
+
+p.body{
+    font-family:'Times New Roman', Times, serif;
+    border-style: solid;
+    border-width: 1px; 
+    border-radius: 25%;
+}
+
+#NavBar{
+    text-decoration: none;
+    text-align: center; 
+    word-spacing: 85px;
+    font-size: 15px;
+} 
+
+h1#nostyle {
+    padding-left: 40%;
+    background-color: black;
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-style: solid;
+    border-color: black;
+    border-width: 20px;
+    margin-bottom: 0%;
+}
+
+/* for attributes (NOT WORKING? */
+input[type = "blogtitle"]{
+    height: 10%;
+}
+
+/* for ids for lists */
+#positions-lists{
+    border-color: gray;
+    border-width: 1px;
+    border-style: dashed; 
+}
+
+/* Adjacent selectors (+) select elements that are directly after another element. For example: */
+h1 + p{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+/* affects the links in nav on page */ 
+a:link {
+    color: blue;
+}
+a:visited {
+    color: red; 
+}
+
+/*
+* active handles the user activating, or clicking on, something e.g. the link.
+* hover handles user input moving over the element e.g. a mouse hovering over a link
+* focus handles when something is selected by, or is ready for, keyboard input */
+
+a:active{
+    color: yellow;
+    font-size: 100px;
+}
+a:hover{
+    text-decoration: none;
+    color: green;
+}
+
+input:focus {
+    border: 1px solid #439;
+}
+
+
+
+/* You can group multiple selectors in order to give them all the same styling. 
+Separate selectors by commas before the curly brackets in order to group them 
+ex. 
+    p,
+    h1,
+    .titles {
+        color: #000;
+} */
+
+/* nesting 
+ex. 
+    #special h1 {
+        font-size: 25px;
+}
+^ selectors inside selectors will be affected
+*/
+
+
+
