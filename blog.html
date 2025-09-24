@@ -1,16 +1,113 @@
 <!DOCTYPE html>
-
 <html>
+
     <Head>
-        <title attribute = "blogtitle"> Matt Daily </title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title attribute = "blogtitle"> Matt Daily </title>
+                <link rel="stylesheet" href="styles.css" />
     </Head>
 
-        <body>
-            <nav class = "Nav Bar">   </nav>
-                <main>
-                    <h1> Blog </h1>
+    <body>             
+        <nav id="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>   
 
-                </main>
-            <footer class = "Footer"> © 2023 <Personal Website Name> | All Rights Reserved </footer>
-        </body>
+        <h1> Phan-Page </h1>
+        <main class="container">
+            <section class="about">
+                <div class="about-image">
+                    <img src="images/matcha.jpg" alt="matcha" />
+                </div>
+                <div class="about-text">
+                    <p class="body"> Here is my attempt to recreate the Matcha Einspänners I have tried at the cafes I have visited in Los Angeles! <br>
+                        After several attempts over the year, I finally found my favorite ratio for a homemade Matcha Einspänner. Through 
+                        many trial and errors and experimenting with different oatmilk brands and sweetening syrups, I found the perfect balance of sweetness 
+                        and umaminess. <br>
+                            <p><strong> Personal Los Angeles Matcha Recommendations: <br> <i> (click stores for address) </i></strong><br>
+                                <ul>
+                                    <li class="blog" onclick="alert('Address: 710 N Edinburgh Ave, Los Angeles, CA 90046')"> Community Goods </li>
+                                    <li class="blog" onclick="alert('Address: 2881 W Olympic Blvd, Los Angeles, CA 90006')"> MemoryLook </li>
+                                </ul>
+                    </p>
+                </div>
+                
+                <button id="toggleButton" 
+                onclick="         
+                    const recipe = document.getElementById('recipe');
+                    const button = document.getElementById('toggleButton');
+                    const isHidden = window.getComputedStyle(recipe).display === 'none';   
+                    if (recipe.style.display === 'none') {
+                        recipe.style.display = 'block';
+                        button.textContent = 'Hide Recipe'; 
+                    } 
+                    else {
+                    recipe.style.display = 'none';
+                    button.textContent = 'Show Recipe'; } "> View Recipe!
+                </button>
+
+                <ul id="recipe" style="display:none; margin-top: 10px; padding: 10px; background-color: #f9f9f9; border-radius: 8px;">
+                    <li> 1 tsp matcha powder </li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </section>
+        </main> 
+
+        <main class="container">
+            <section class="about-reversed">
+                <div class="about-image">
+                    <video width="320" height="360" controls>
+                        <source src="images/golf.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="about-text">
+                    <p class="body"> Here is a video of me trying out golfing over Summer. I have been going to the golf range with my friends, practicing my swings. I have not been consistent with 
+                        this though. Playing golf with my friends at the nearest range, to me, is a good break away and a good bonding time. I have friends
+                        who have taken a few lessons from professionals and having them teach me as I try to perfect my swings is fun. To this day, I am still failing
+                        to be consistent with my swings; however, with time, I hope to be able to get good contact with my swings on the ball. Adjusting my hips, my swings,
+                        my arms after every fail is mentally tough, though practice makes perfect is what I believe and preach. Golf is something I will
+                        keep on practicing occassionally on my free times since I enjoy the break and satisfaction I get every time I see improvement.  
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <main class="container">
+            <section class="about-reversed">
+                <div class="about-image">
+                    <img src="images/certificate.png" alt="mffu" />
+                </div>
+
+                <div class="about-text">
+                    <p class="body"> 
+                        My most valuable asset and passion of mines for the past 3 years have been Intraday Trading. A love and hate relationship.
+                        Through years of practice, patience, and discipline, I have progressed to the point where I am now. In these markets, I am 
+                        going head to head  against billion dollar firms, Quants, and banks. Each day, I clock in at 5:30am, ready to make trade decisions
+                        with confidence in my edge in the market backed with historical data. 
+                        <br> </br>
+                        In this profession, deemed as the most mentally challenging job by many, I have not only grown skill-wise but also grown myself as person. What I have learned from this ruthless market is that it does not care about anyone
+                        or anything. Every day, the market has a goal: to reach a certain price, stopping anyone who decides to go against it. I have watched others online who fail to realize this key idea,
+                        get slaughtered in this market. I was one of those traders at one point...However, my ability to adapt, grow, and learn from these mistakes 
+                        allowed me to reach the point where I have proven my consistency in taking valid and winning trades. I have faced plenty of days where I have taken
+                        losses back to back to back. Each time I enter a trade, it is my decision and my accountability. I have learned how to manage my risk, my emotions, my executions. 
+                        <br> </br>
+                        After 3 years, through the lows and the highs, I am glad to say I have finally gotten to the point where I am confident in the markets and myself.              
+                        This same process that I have gone through is applicable to everything every person goes through in life. Whether it is games or Computer Science or a hobby. So many people
+                        get stuck in a phase where nothing is working or they are not good at it, they fail and give up. Through time and respecting the process,
+                        everyone can become great at it if enough effort and determination is shown. 
+                </div>
+            </section>
+        </main>
+
+    <footer class="footer"> © 2023 Matthew Phan | All Rights Reserved </footer>
+    </body>
 </html>

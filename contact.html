@@ -1,33 +1,38 @@
 <!DOCTYPE html>
+<html>
+    
     <Head>
-        <title> Contact </title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title attribute = "contactTitle"> contact </title>
+                <link rel="stylesheet" href="styles.css" />
     </Head>
 
 
-        <body>
-            <nav class = "Nav Bar"> 
-                    <h1 class = "logo"></h1>
-                        <ul>
-                            <li><a href = "index.html"> Home</a></li>
-                            <li><a href = "blog.html"> Blog </a></li>
-                            <li><a href = "contact.html"> Contacts </a></li>
-                            <li><a href = "portfolio.html"> Portfolio</a></li>
-                            <li><a href = "resume.html"> Resume</a></li>
-                            <li><a href = "Header.html"> Header</a></li>
-                            <li><a href = "table.html"> Table </a></li>
-                        </ul>          
-            </nav>
-                <main>
-                    <h1> Contact </h1>
-                        <form id = "contact-form"> 
-                            <label for = "name"> Name </label>
-                            <input type = "text" id = "name"> 
-                            <Label for = "email"> Email </Label>
-                            <input type = "email" id = "email"> 
-                            <textarea> Leave a Message</textarea>
+    <body>
+        <nav id="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>   
+                
+    <main>
+        <h1> Contact </h1>
+            <form id = "contact-form"> 
+                <label for = "name"> Name </label>
+                   <input type = "text" id = "name"> 
+                    <Label for = "email"> Email </Label>
+                    <input type = "email" id = "email"> 
+                    <textarea> Leave a Message</textarea>
                             <input type = "submit" /> 
-                        </form>
-                </main>
-            <footer class = "Footer"> © 2023 <Personal Website Name> | All Rights Reserved </footer>
-        </body>
+            </form>
+            <p class="center"> <i>"Thank you for reaching out! I will be in touch shortly." </i></p>
+    </main>  
+    
+    <footer class="footer"> © 2023 Matthew Phan | All Rights Reserved </footer>
+
+</body>
 </html>

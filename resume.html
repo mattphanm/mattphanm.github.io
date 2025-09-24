@@ -1,43 +1,68 @@
 <!DOCTYPE html>
-    <Head>
-        <title> Resume </title>
-    </Head>
+<html>
 
-        <body>
-            <nav class = "Nav Bar"> </nav>
-                <main>
-                    <h1 class = "section-title"> Resume </h1>
-                        <a href = "CS Resume.pdf" download> Download Resume </a>
-                    
-                            <div class = "entry">  
-                            <h3 class = "entry-title">  Education </h3>    
-                                <p class = "entry-info"> <strong> Cal Poly San Luis Obispo </strong> </p>
-                                <p class = "entry-description"> Freshman, 2027 </p>
-                            <h3 class = "entry-title"> Coursework and Skills</h3>
-                                <ul class = "skills-list">
-                                    <li> Math </li>
-                                    <li> English </li>
-                                    <li> Science </li>
-                                </ul>
-                        </div>
-                    <div class = "resume">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title> Resume</title>
+        <link rel="stylesheet" href="styles.css" />
+        <style class="pdf-resume">
+            .pdf-container {
+                width: 80%;
+                height: 600px;
+                margin: 40px auto;
+                border: 3px solid #333;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+                border-radius: 10px;
+                overflow: hidden;
+            }
 
-                        <!-- Header 2 -->
-                        <section class = "section">
-                            <h2 class = "section-title">
-                                <h3 class = "entry"> Education</h1>
-                            </h2>   
-                        </section>
+            .pdf-container iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
 
-                        <!-- Header 3 -->
-                        <section class = "section">
-                            <h2 class = "section-title">
-                                <p> Projects</p>
-                            </h2>                
-                        </section>
-                
-                    </div>
-                </main>
-            <footer class = "Footer"> © 2023 <Personal Website Name> | All Rights Reserved </footer>
-        </body>
+            .download-btn {
+                display: inline-block;
+                margin: 15px auto;
+                padding: 10px 20px;
+                background: #0073e6;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+            }
+
+            .download-btn:hover {
+                background: #005bb5;
+            }
+        </style>
+    </head>
+
+    <body>
+        <nav id="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+
+            </ul>
+        </nav>  
+        
+        <main>
+            <div class="project"> 
+                <div class="project-details"> 
+                </div> 
+            </div>
+
+            <h2>My Resume</h2>
+            <div class="pdf-container">
+                <iframe src="Matthew Phan CS Resume (Updating)-2.pdf"></iframe>
+            </div>
+            <a class="download-btn" href="Matthew Phan CS Resume (Updating)-2.pdf" download>Download Resume</a>
+        </main>
+
+    <footer class="footer"> © 2023 Matthew Phan | All Rights Reserved </footer>
+    </body>
 </html>

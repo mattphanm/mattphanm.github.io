@@ -1,25 +1,29 @@
 <!DOCTYPE html>
+
     <Head>
-        <title> Portfolio </title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title attribute = "portfolioTitle"> Portfolio </title>
+                <link rel="stylesheet" href="styles.css" />        
     </Head>
 
-        <body>
-            <nav class = "Nav Bar">   </nav>
-                <main>
-                    <h1> Portfolio </h1>
-                    <!-- image and link -->
-                        <div class = "project"> 
-                            <a href = "index.html">
-                                <img src = "city.jpeg" alt = "photo">
-                            </a>
-                        <!-- Web Details -->
-                        <div class = "project-details"> 
-                                <p class = "project-name"> Phan's Resume </p>
-                                <p class = "project-description"> Intro to Phan's Portfolio </p>
-                                <a href = "index.html"> Learn More </a>
-                        </div> 
-                        </div>
-                </main>
-            <footer class = "Footer"> © 2023 <Personal Website Name> | All Rights Reserved </footer>
-        </body>
+    <body>
+        <nav id="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>  
+            
+        <main>
+            <h2 class="center"> <u> Attached Below is my Resume: </u></h2>
+                <div class="pdf-container">
+                    <iframe src="Matthew Phan CS Resume (Updating)-2.pdf"></iframe>
+                </div>
+        </main>
+     
+    <footer class="footer"> © 2023 Matthew Phan | All Rights Reserved </footer>
+    </body>
 </html>

@@ -1,159 +1,295 @@
-p#first{
-    font-size: 25px;
-    font-family: sans-serif;
-    font-weight: bold;
-    text-align: center;
+/* Background color */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f7fa; 
+    color: #333;
+    line-height: 1.6;
 }
 
-p{
+/* Navbar */
+#navbar {
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    padding: 10px 0;
+}
+
+#navbar ul {
+    list-style: none;
+    display: flex;
     justify-content: center;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+#navbar a:hover {
+    color: #007BFF;
+    border-bottom: 2px solid #007BFF;
+}
+
+/* Containers for text */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+#contact-form {
+    padding-right: 50px;
+}
+
+.lower-two-columns {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.lower-two-columns .column {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Headings */
+h1 {
     text-align: center;
-    color: black;
+    font-size: 38px;
+    margin-bottom: 40px;
+    color: #222;
 }
 
-
-/*for class */
-.About {
-    background-color: #E1DCD9;
-    font-size: 150%;
-
-}
-#lists{
-    width: 400px; 
-	margin-left: auto; 
-	margin-right: auto; 
-}
-
-#positions-lists{
+.center { 
     text-align: center;
-    width: 400px; 
-	margin-left: auto; 
-	margin-right: auto; 
+    font-size: 25px;
+    padding: 30px;
 }
 
-#goals{
-    margin-left: 2%;
+h2, h3, h4, h5, h6 {
+    color: #444;
+    margin-bottom: 15px;
 }
 
-#image{
+/* Artist column */
+.artist { text-align: center; }
+
+.artist a.song-img {
+  display: inline-block;
+  width: 280px;   
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.artist a.song-img .rodwave {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+}
+  
+/* Portfolio */
+.pdf-container {
+    width: 80%;
+    height: 600px;
+    margin: 40px auto;
+    border: 3px solid #333;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.pdf-container iframe {
     width: 100%;
-    border-radius: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
+    height: 100%;
+    border: none;
 }
 
-.about-image{
-    margin-left: 27%;
-    border-radius: 105px;
-    border-color: darkblue;
-    border-style: solid;
-    display: inline-block;   
-    margin-top: 2%; 
-}
-
-.Footer{
-    color: white;
-    justify-content: center; 
+/* blog */
+.about {
     display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
     align-items: center;
-    font-weight: 50%;
-    font-family: 'Times New Roman', Times, serif;
-    background-color: black;
-    padding: 10px 10px 10px 10px;
-}
-/* for tags*/
-#first {
-    font-size: 25px;
-    text-decoration: underline;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-p.body{
-    font-family:'Times New Roman', Times, serif;
-    border-style: solid;
-    border-width: 1px; 
-    border-radius: 25%;
+.about-reversed {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex-direction: row-reverse;
 }
 
-#NavBar{
-    text-decoration: none;
-    text-align: center; 
-    word-spacing: 85px;
-    font-size: 15px;
-} 
+.about-image img {
+    max-width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
-h1#nostyle {
-    padding-left: 40%;
-    background-color: black;
+.about-text {
+    flex: 1;
+    min-width: 280px;
+}
+
+video {
+    border-radius: 150px;
+}
+
+.about-text p.body {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #fafafa;
+    margin-bottom: 20px;
+}
+
+/* blog - interact w/ location list */
+ol, ul {
+    padding-left: 25px;
+    margin-bottom: 20px;
+}
+
+ol li, ul li {
+    margin-bottom: 8px;
+}
+
+/* Form styles */
+form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+form textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+form input[type="submit"] {
+    background-color: #007BFF;
     color: white;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    border-style: solid;
-    border-color: black;
-    border-width: 20px;
-    margin-bottom: 0%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* for attributes (NOT WORKING? */
-input[type = "blogtitle"]{
-    height: 10%;
-}
-
-/* for ids for lists */
-#positions-lists{
-    border-color: gray;
-    border-width: 1px;
-    border-style: dashed; 
-}
-
-/* Adjacent selectors (+) select elements that are directly after another element. For example: */
-h1 + p{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
-}
-
-/* affects the links in nav on page */ 
-a:link {
-    color: blue;
-}
-a:visited {
-    color: red; 
-}
-
-/*
-* active handles the user activating, or clicking on, something e.g. the link.
-* hover handles user input moving over the element e.g. a mouse hovering over a link
-* focus handles when something is selected by, or is ready for, keyboard input */
-
-a:active{
-    color: yellow;
-    font-size: 100px;
-}
-a:hover{
-    text-decoration: none;
-    color: green;
-}
-
-input:focus {
-    border: 1px solid #439;
+form input[type="submit"]:hover {
+    background-color: #0056b3;
 }
 
 
-
-/* You can group multiple selectors in order to give them all the same styling. 
-Separate selectors by commas before the curly brackets in order to group them 
-ex. 
-    p,
-    h1,
-    .titles {
-        color: #000;
-} */
-
-/* nesting 
-ex. 
-    #special h1 {
-        font-size: 25px;
+/* Table styles from tutorial */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
 }
-^ selectors inside selectors will be affected
-*/
 
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: center;
+}
 
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
 
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+button {
+    background-color: #808080;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+
+}
+
+/* Footer */
+footer.footer {
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    color: #666;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 60px;
+    font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #navbar ul {
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .about {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .about-image img {
+        max-width: 100%;
+    }
+    
+    
+}

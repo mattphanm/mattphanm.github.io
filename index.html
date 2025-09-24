@@ -1,58 +1,85 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html> 
-    <Head>
-        <Title> Phan Web </Title>
-        <link rel = "stylesheet" href = "styles.css" />
-    </Head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Matthew Phan | Home</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
 
-        <body>
-            <nav id = "NavBar">
-                <!--
-                <h1 class = "logo"> View: </h1>
-                    <p> Click One! </p>
-                -->
-                    <ul class>
-                        <a id = "index" href = "index.html"> Home</a>
-                        <a id = "blog" href = "blog.html"> Blog </a>
-                        <a id = "contact" href = "contact.html"> Contacts </a>
-                        <a id = "portfolio" href = "portfolio.html"> Portfolio</a>
-                        <a id = "resume" href = "resume.html"> Resume</a>
-                        <a id = "header" href = "Header.html"> Header</a>
+    <body>
+        <nav id="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+
+            </ul>
+        </nav>
+
+        <main class="container">
+            <h1>Matthew's Home Page</h1>
+            <section class="about">
+                <div class="about-image">
+                    <img src="images/me.jpeg" alt="selfie" />
+                </div>
+                <div class="about-text">
+                    <p class="body">My name is Matthew Phan, and I am a 3rd year student at Cal Poly SLO studying Computer Science!<br>
+                    I am looking forward to joining Hack4Impact to learn and further my skills in my field!</p>
+                    <p><strong>I hope that I will find a job that I love. Here are my Goals:</strong></p>
+                    <ol>
+                        <li>Begin My Self Study Adventure</li>
+                        <li>Better My Skills</li>
+                        <li>Get A Job And Travel Abroad</li>
+                    </ol>
+                    <p><strong>Extra Goals:</strong></p>
+                    <ul>
+                        <li>Buy Clothes</li>
+                        <li>Explore The World</li>
                     </ul>
-                    
+                </div>
+            </section>
+        
+            <!-- Second row w/ two column -->
+            <section class="lower-two-columns">
+                <div class="column">
+                    <h2 class="center"> My Background</h2>
+                    <p> I am born and raised in California, more specifically San Gabriel. My family has always been supportive
+                        of my dreams and goals in the future which plays a deep role in my motivation to always do my best.
+                        I love spending time outside whether it is hiking, eating, or exploring surrounding areas with my close friends, ones
+                        that have stuck by my side since my early middle school years and that I genuinely appreciate. So far, my college experience
+                        in Cal Poly San Luis Obispo has been very fun as I also met more and expanded my network of friends, spending
+                        a lot of my time around them creating new memories. 
+                        <br>
+                        Right now, I’m focused on building and refining the skills to land a 
+                        software engineering role in the future which will be my main job. Alongside that, 
+                        I dedicate significant time to investing and trading, aiming to develop a steady side 
+                        income to complement my career in computer science. My hobbies are few by choice, but they’re ones I genuinely enjoy and commit to as I believe this is the most optimal way to grow and improve in them. 
+                    </p>
+                </div>
+        
+                <div class="column">
+                    <h2 class="center"> My Artist of the Year: Rod Wave <br> <i> (click to photo to interact!) </i> </h2>
+                    <div class="artist">
+                    <a class="song-img"
+                        href="https://open.spotify.com/track/1qJGJR5DXftoDjeNjNvIDy?si=ddd6a3398a6d4792" target="_blank"> 
+                        <img class="rodwave" src="images/rodwave.jpg" alt="rodwave">
+                    </a>
+                    <p> 
+                        One of my favorite songs from Rod Wave is "Last Lap." It is one of Rod Wave’s standout songs, with it being the headliner of 
+                        his newest album. 
+                        He’s a top artist for me because his themes are very relatable. 
+                        In this track, he pays tribute to his uncle, an influential figure in his life who sadly passed while grieving the loss of his two daughters. 
+                        Much of his music is melodic and grounded in real-life challenges, underscoring the idea that everyone faces hardship and that, 
+                        even through the lows and highs in life, you must keep going. 
+                    </p>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-            </nav>
-
-
-                <main>
-                    <h1 id = "nostyle"> <tag attribute = "title"> <strong> Matthew's Home Page</strong> </tag> </h1>
-                            <div class = "About">
-                                <div class = "about-image"> 
-                                    <img id = "image" src = "city.jpeg" alt = "Serene Photo">
-                                </div>
-                                <div class = "about-text">
-                                    <p id = "first"> <em>  Introduction: </em> </p>
-                                    <p class = "body"> My name is Matthew Phan, and I am a 1st Year student at Cal Poly Slo 
-                                        studying Computer Science! <br> I am looking forward to joining Hack4Impact
-                                        to learn and further my skills in my field! </p>
-                                    <p> <strong> I hope that I will find a job that I love. Here are my Goals: </strong></p>
-                                    <!-- Ordered Lists-->
-                                    <ol id = "lists">
-                                        <li> Begin My Self Study Adventure</li>
-                                        <li> Better My Skills </li>
-                                        <li> Get A Job And Travel Abroad </li>
-                                    </ol>
-                                    <p id = "goals"> <strong>Extra Goals: </strong></p>
-                                    <!-- Unordered Lists-->
-                                    <ul id = "positions-lists">
-                                        <li> Buy Clothes </li>
-                                        <li> Explore The World</li>
-                                    </ul>
-                                </div>
-                            </div>
-                </main>
-            <footer class = "Footer"> © 2023 <Personal Website Name> | All Rights Reserved </footer>
-        </body>
-
+    <footer class="footer"> © 2023 Matthew Phan | All Rights Reserve </footer>
+    </body>
 </html>
