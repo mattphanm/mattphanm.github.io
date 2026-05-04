@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matthew Phan — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Syne:wght@400;700&family=Fira+Code:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+</head>
+<body>
+  <div id="blob"></div>
+
+  <div id="code-overlay">
+    <svg width="110" height="110" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="10" y="88" width="100" height="6" rx="3" fill="#2e2b26"/>
+      <rect x="28" y="94" width="8" height="16" rx="2" fill="#2e2b26"/>
+      <rect x="84" y="94" width="8" height="16" rx="2" fill="#2e2b26"/>
+      <rect x="30" y="54" width="60" height="38" rx="4" fill="#1c1a17"/>
+      <rect x="33" y="57" width="54" height="30" rx="2" fill="#0f0e0b"/>
+      <rect id="osl1" x="37" y="62" width="22" height="2.5" rx="1" fill="#e06a2c" opacity="0.9"/>
+      <rect id="osl2" x="37" y="67" width="32" height="2.5" rx="1" fill="#7ab8f5" opacity="0.8"/>
+      <rect id="osl3" x="37" y="72" width="18" height="2.5" rx="1" fill="#6bcb77" opacity="0.8"/>
+      <rect id="osl4" x="37" y="77" width="28" height="2.5" rx="1" fill="#f5c842" opacity="0.7"/>
+      <rect x="55" y="92" width="10" height="4" rx="1" fill="#2e2b26"/>
+      <rect x="34" y="84" width="32" height="6" rx="2" fill="#3a3530"/>
+      <ellipse cx="75" cy="99" rx="10" ry="7" fill="#c0845a"/>
+      <ellipse cx="75" cy="99" rx="8" ry="5.5" fill="#5b8dd9"/>
+      <line x1="68" y1="97" x2="52" y2="87" stroke="#c0845a" stroke-width="4" stroke-linecap="round"/>
+      <line x1="82" y1="97" x2="62" y2="87" stroke="#c0845a" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="75" cy="88" r="9" fill="#e8b88a"/>
+      <path d="M66 86 Q67 78 75 78 Q83 78 84 86" fill="#2e2b26"/>
+      <rect x="69" y="86" rx="2" width="5" height="3.5" fill="none" stroke="#2e2b26" stroke-width="1.1"/>
+      <rect x="76" y="86" rx="2" width="5" height="3.5" fill="none" stroke="#2e2b26" stroke-width="1.1"/>
+      <line x1="74" y1="87.8" x2="76" y2="87.8" stroke="#2e2b26" stroke-width="0.9"/>
+      <circle cx="71.5" cy="87.8" r="1" fill="#1c1a17"/>
+      <circle cx="78.5" cy="87.8" r="1" fill="#1c1a17"/>
+      <path d="M72 92 Q75 94.5 78 92" stroke="#a06040" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <circle id="ohl" cx="52" cy="87" r="3.5" fill="#e8b88a"/>
+      <circle id="ohr" cx="62" cy="87" r="3.5" fill="#e8b88a"/>
+    </svg>
+
+    <div class="code-window">
+      <div class="code-titlebar">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+      </div>
+      <div class="code-body" id="code-output"></div>
+    </div>
+  </div>
+
+  <div id="main-content">
+    <div class="page">
+      <header>
+        <nav class="nav">
+          <span class="nav-name">Matthew Phan</span>
+          <span class="nav-meta">CS · Cal Poly SLO · 2027</span>
+          <section class="tech-strip" aria-label="Tech stack">
+            <span class="tech-item"><i class="tech-icon devicon-python-plain"></i>Python</span>
+            <span class="tech-item"><i class="tech-icon devicon-typescript-plain"></i>TypeScript</span>
+            <span class="tech-item"><i class="tech-icon devicon-azuresqldatabase-plain"></i>SQL</span>
+            <span class="tech-item"><i class="tech-icon devicon-react-original"></i>React</span>
+            <span class="tech-item"><i class="tech-icon devicon-vitejs-plain"></i>Vite</span>
+            <span class="tech-item"><i class="tech-icon devicon-github-original"></i>GitHub</span>
+            <span class="tech-item"><i class="tech-icon devicon-stackoverflow-plain"></i>Full-Stack</span>
+            <span class="tech-item"><i class="tech-icon devicon-jira-plain"></i>AGILE</span>
+            <span class="tech-item"><i class="tech-icon devicon-fastapi-plain"></i>REST APIs</span>
+            <span class="tech-item"><i class="tech-icon devicon-json-plain"></i>JSON</span>
+            <span class="tech-item"><i class="tech-icon devicon-html5-plain"></i>HTML</span>
+            <span class="tech-item"><i class="tech-icon devicon-css3-plain"></i>CSS</span>
+            <span class="tech-item"><i class="tech-icon devicon-nodejs-plain"></i>Node</span>
+            <span class="tech-item"><i class="tech-icon devicon-express-original"></i>Express.js</span>
+          </section>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero-wrap" aria-labelledby="hero-heading">
+          <div class="hero-left">
+            <p class="hero-name">Matthew Phan</p>
+            <p class="hero-eyebrow">Software Engineer · Open to Work</p>
+            <h1 class="hero-heading" id="hero-heading">
+              <span class="hero-reveal">I build for</span><br>
+              <em>people,</em><br>
+              <span class="hero-reveal">not just screens.</span>
+            </h1>
+            <p class="hero-sub">
+              Apps that ship, tools that feed communities, and AI that actually helps.
+              I care about what happens after launch.
+            </p>
+          </div>
+
+
+          <div class="hero-right">
+            <svg id="coder-scene" width="190" height="172" viewBox="0 0 190 172" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <line x1="158" y1="44" x2="158" y2="70" stroke="#3a3530" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="158" y1="44" x2="140" y2="54" stroke="#3a3530" stroke-width="3.5" stroke-linecap="round"/>
+              <ellipse cx="133" cy="57" rx="11" ry="6.5" fill="#f5c842" opacity="0.9"/>
+              <ellipse id="lamp-glow" cx="133" cy="63" rx="20" ry="9" fill="#f5c842" opacity="0.13"/>
+              <rect x="10" y="122" width="170" height="9" rx="4" fill="#2e2b26"/>
+              <rect x="28" y="131" width="12" height="30" rx="3" fill="#2e2b26"/>
+              <rect x="136" y="131" width="12" height="30" rx="3" fill="#2e2b26"/>
+              <rect x="42" y="70" width="96" height="56" rx="6" fill="#1c1a17"/>
+              <rect x="47" y="75" width="86" height="46" rx="3" fill="#0f0e0b"/>
+              <rect id="sl1" x="54" y="82" width="30" height="3" rx="1" fill="#e06a2c" opacity="0.9"/>
+              <rect id="sl2" x="54" y="90" width="50" height="3" rx="1" fill="#7ab8f5" opacity="0.8"/>
+              <rect id="sl3" x="54" y="98" width="22" height="3" rx="1" fill="#6bcb77" opacity="0.8"/>
+              <rect id="sl4" x="54" y="106" width="40" height="3" rx="1" fill="#f5c842" opacity="0.7"/>
+              <rect id="scursor" x="54" y="113" width="7" height="3" rx="1" fill="#e06a2c"/>
+              <rect x="82" y="126" width="18" height="6" rx="2" fill="#2e2b26"/>
+              <rect x="52" y="118" width="56" height="8" rx="3" fill="#3a3530"/>
+              <ellipse cx="124" cy="138" rx="15" ry="10" fill="#c0845a"/>
+              <ellipse cx="124" cy="138" rx="13" ry="8" fill="#5b8dd9"/>
+              <line id="arm-l" x1="112" y1="133" x2="84" y2="119" stroke="#c0845a" stroke-width="5.5" stroke-linecap="round"/>
+              <line id="arm-r" x1="136" y1="133" x2="104" y2="119" stroke="#c0845a" stroke-width="5.5" stroke-linecap="round"/>
+              <circle cx="124" cy="120" r="14" fill="#e8b88a"/>
+              <path d="M110 118 Q111 105 124 105 Q137 105 138 118" fill="#2e2b26"/>
+              <rect x="115" y="118" rx="2.5" width="7" height="5" fill="none" stroke="#2e2b26" stroke-width="1.3"/>
+              <rect x="124" y="118" rx="2.5" width="7" height="5" fill="none" stroke="#2e2b26" stroke-width="1.3"/>
+              <line x1="122" y1="120.5" x2="124" y2="120.5" stroke="#2e2b26" stroke-width="1"/>
+              <circle cx="118.5" cy="120.5" r="1.2" fill="#1c1a17"/>
+              <circle cx="127.5" cy="120.5" r="1.2" fill="#1c1a17"/>
+              <path d="M119 127 Q124 130.5 129 127" stroke="#a06040" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+              <circle id="hand-l" cx="84" cy="119" r="4.5" fill="#e8b88a"/>
+              <circle id="hand-r" cx="104" cy="119" r="4.5" fill="#e8b88a"/>
+              <rect x="152" y="114" width="18" height="13" rx="3" fill="#fff" stroke="#e4dfd7" stroke-width="1.3"/>
+              <path d="M170 117 Q176 117 176 121 Q176 125 170 125" stroke="#e4dfd7" stroke-width="1.8" fill="none"/>
+              <rect x="154" y="111" width="14" height="5" rx="2" fill="#6bcb77" opacity="0.65"/>
+              <path id="steam1" d="M156 111 Q158 107 156 103" stroke="#bbb" stroke-width="1.3" fill="none" stroke-linecap="round" opacity="0.5"/>
+              <path id="steam2" d="M162 111 Q164 107 162 103" stroke="#bbb" stroke-width="1.3" fill="none" stroke-linecap="round" opacity="0.4"/>
+            </svg>
+
+            <div class="section-btns">
+              <button class="sec-btn" onclick="navigateTo('work', this)">Projects</button>
+              <button class="sec-btn" onclick="navigateTo('exp', this)">Experience</button>
+              <button class="sec-btn" onclick="navigateTo('about', this)">About Matt</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="float-row" aria-label="Impact metrics">
+          <div class="fcard">
+            <div class="fcard-num">50+</div>
+            <p class="fcard-label">App Store users on PolyBuys</p>
+          </div>
+          <div class="fcard">
+            <div class="fcard-num">25+</div>
+            <p class="fcard-label">orgs connected via VeggieRescue</p>
+          </div>
+          <div class="fcard">
+            <div class="fcard-num">2nd</div>
+            <p class="fcard-label">place at OpenAI Hackathon 2026</p>
+          </div>
+        </section>
+
+        <section class="contact-row" aria-label="Contact links">
+          <a class="cta fill" href="mailto:matthewphanm@gmail.com">say hello</a>
+          <a class="cta" href="https://github.com/mattphanm/" target="_blank" rel="noopener">GitHub</a>
+          <a class="cta" href="https://www.linkedin.com/in/matthewphanm/" target="_blank" rel="noopener">LinkedIn</a>
+        </section>
+
+        <section id="work" class="section" aria-label="Projects">
+          <p class="s-head">Things I've made</p>
+          <p class="s-sub">Tap a card to see more detail.</p>
+          <div class="work-grid">
+            <article class="wcard" onclick="toggleDetail('d1')">
+              <span class="wtag tag-live">live on App Store</span>
+              <h3 class="wcard-title">PolyBuys</h3>
+              <p class="wcard-desc">Cal Poly-exclusive student marketplace - safe, trusted, and actually used.</p>
+              <div class="warrow">↗</div>
+              <p class="wcard-detail" id="d1">50+ active users. Tag-based filtering, content moderation with auth + rate-limiting. Built with React Native, TypeScript, and Convex.</p>
+            </article>
+
+            <article class="wcard" onclick="toggleDetail('d2')">
+              <span class="wtag tag-np">nonprofit</span>
+              <h3 class="wcard-title">VeggieRescue</h3>
+              <p class="wcard-desc">Connecting surplus food to schools, nonprofits, and community programs.</p>
+              <div class="warrow">↗</div>
+              <p class="wcard-detail" id="d2">25+ partner orgs. Full-stack with Next.js and Express. Secure REST APIs, session-based auth, donation dashboard workflows.</p>
+            </article>
+
+            <article class="wcard" onclick="toggleDetail('d3')">
+              <span class="wtag tag-open">open &amp; free</span>
+              <h3 class="wcard-title">STARLY.AI</h3>
+              <p class="wcard-desc">Free AI mock-interviewer. 2nd place at OpenAI Hackathon, now a nonprofit.</p>
+              <div class="warrow">↗</div>
+              <p class="wcard-detail" id="d3">STAR-framework scoring across 6 dimensions, body language analysis via MediaPipe. Cut AI response latency 70% using Groq. Whisper speech-to-text + TTS pipeline.</p>
+            </article>
+
+            <article class="wcard" onclick="toggleDetail('d4')">
+              <span class="wtag tag-pers">personal</span>
+              <h3 class="wcard-title">AI-Trade</h3>
+              <p class="wcard-desc">Automated trading system with custom risk engines and market intelligence pipelines.</p>
+              <div class="warrow">↗</div>
+              <p class="wcard-detail" id="d4">TradingView webhook ingestion, decision + risk engines, YouTube MCP pipelines for signal intelligence. Idempotent processing to prevent duplicate signals. Python + Next.js.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="exp" class="section" aria-label="Experience">
+          <p class="s-head">Experience</p>
+          <p class="s-sub">Where I've shipped real things.</p>
+          <div class="timeline">
+            <article class="titem">
+              <p class="t-date">Feb 2026 - present</p>
+              <div>
+                <h3 class="t-role">Full-Stack Developer</h3>
+                <p class="t-org">STARLY.AI (nonprofit)</p>
+                <p class="t-desc">Expanded post-hackathon into a free nonprofit tool - STAR scoring across 6 dimensions, body language analysis, and slashed AI latency 70% with Groq low-latency inference.</p>
+              </div>
+            </article>
+
+            <article class="titem">
+              <p class="t-date">Jan 2026 - present</p>
+              <div>
+                <h3 class="t-role">Full-Stack Developer</h3>
+                <p class="t-org">VeggieRescue</p>
+                <p class="t-desc">Built the entire platform from scratch - database schema, Express REST APIs, donor dashboard, and partner org management connecting 25+ nonprofits, schools, and community programs.</p>
+              </div>
+            </article>
+
+            <article class="titem">
+              <p class="t-date">Nov 2025 - Apr 2026</p>
+              <div>
+                <h3 class="t-role">Creator</h3>
+                <p class="t-org">PolyBuys</p>
+                <p class="t-desc">Designed and shipped a Cal Poly-exclusive marketplace to the App Store. 50+ active users, full auth system, content moderation with rate-limiting and automated listing removal.</p>
+              </div>
+            </article>
+
+            <article class="titem">
+              <p class="t-date">Oct 2025 - present</p>
+              <div>
+                <h3 class="t-role">Full-Stack Developer</h3>
+                <p class="t-org">Cal Poly Codebox</p>
+                <p class="t-desc">Collaborative campus-focused product development. Built a trusted marketplace, campus mapping tool, and more - real teams, real users, real feedback loops.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="about" class="section" aria-label="About Matthew">
+          <p class="s-head">Hey, I'm Matthew.</p>
+          <p class="s-sub">A little more about what makes me tick.</p>
+          <div class="about-grid">
+            <article class="acard">
+              <h3>What drives me</h3>
+              <p>I build things because I want them to exist in the world - not just on my laptop. Most of my projects started with someone asking "why doesn't this exist yet?"</p>
+            </article>
+
+            <article class="acard">
+              <h3>Outside of code</h3>
+              <p>I follow the markets closely and build my own trading tools. There's real overlap between thinking like an engineer and thinking like an investor.</p>
+              <div class="chips">
+                <span class="chip">stocks</span>
+                <span class="chip">markets</span>
+                <span class="chip">building</span>
+                <span class="chip">SLO</span>
+              </div>
+            </article>
+
+            <article class="acard photo-card">
+              <img src="previews/themes/IMG_2615.png" alt="Matthew at the beach during sunset" class="about-photo" loading="lazy" />
+              <p class="photo-caption">Building for people starts by listening first.</p>
+            </article>
+
+            <article class="acard acard-wide">
+              <h3>How I work</h3>
+              <p>I like teams that move fast and actually ship. I'm comfortable with ambiguity - half my projects started without a clear spec. I care deeply about what happens after launch. Who's using it? Does it help them? That's the real metric.</p>
+            </article>
+          </div>
+
+          <div class="about-cta-row">
+            <a class="cta fill" href="mailto:matthewphanm@gmail.com">get in touch</a>
+            <a class="cta" href="https://www.linkedin.com/in/matthewphanm/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="cta" href="https://github.com/mattphanm/" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span class="footer-left">Matthew Phan · Cal Poly SLO · 2027</span>
+        <div class="footer-links">
+          <a href="https://github.com/mattphanm/" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/matthewphanm/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:matthewphanm@gmail.com">Email</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
