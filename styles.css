@@ -85,6 +85,8 @@ body::after {
   will-change: transform;
   z-index: 1;
   mix-blend-mode: multiply;
+  opacity: 0;
+  display: none;
 }
 
 .nav {
@@ -366,33 +368,35 @@ body::after {
 
 .hero-right {
   position: absolute;
-  right: 24px;
-  bottom: 0;
+  right: 8px;
+  bottom: 18px;
   display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  gap: 18px;
+  align-items: center;
+  justify-content: center;
   padding: 0;
   margin: 0;
-  width: auto;
-  max-width: none;
+  width: 460px;
+  height: 420px;
+}
+
+.orbit-nav {
+  width: 460px;
+  height: 420px;
+  position: relative;
+  border-radius: 50%;
 }
 
 #coder-scene {
   width: 224px;
   height: 202px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -42%);
   display: block;
-  margin-left: 0;
-  margin-bottom: -1px;
+  margin: 0;
   filter: saturate(0.7) contrast(0.92) brightness(0.98) sepia(0.12);
-}
-
-.section-btns {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  width: 220px;
-  margin-bottom: 8px;
+  z-index: 2;
 }
 
 .sec-btn {
@@ -419,6 +423,53 @@ body::after {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
+}
+
+.orbit-btn {
+  position: absolute;
+  width: 158px;
+  z-index: 3;
+}
+
+.orbit-btn::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 1.5px;
+  background: rgba(101, 94, 85, 0.48);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.orbit-projects {
+  left: 34px;
+  top: 72px;
+}
+
+.orbit-projects::before {
+  width: 132px;
+  transform: translateY(-50%) rotate(27deg);
+}
+
+.orbit-experience {
+  right: 10px;
+  top: 178px;
+}
+
+.orbit-experience::before {
+  width: 140px;
+  transform: translate(-100%, -50%) rotate(182deg);
+}
+
+.orbit-about {
+  left: 44px;
+  bottom: 60px;
+}
+
+.orbit-about::before {
+  width: 130px;
+  transform: translateY(-50%) rotate(-25deg);
 }
 
 .float-row {
@@ -802,15 +853,36 @@ body::after {
 
   .hero-right {
     position: static;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
   }
 
-  .section-btns {
-    grid-template-columns: 1fr;
+  .orbit-nav {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    display: grid;
+    justify-items: center;
+    gap: 12px;
+  }
+
+  #coder-scene {
+    position: static;
+    transform: none;
+    width: 210px;
+    height: 190px;
+    margin-bottom: 4px;
+  }
+
+  .orbit-btn {
+    position: static;
     width: 100%;
     max-width: 280px;
-    margin-bottom: 0;
+  }
+
+  .orbit-btn::before {
+    display: none;
   }
 
   .hero-heading {

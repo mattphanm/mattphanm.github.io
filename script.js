@@ -4,6 +4,9 @@ let targetY = window.innerHeight / 2;
 let currentX = targetX;
 let currentY = targetY;
 let revealChars = [];
+let blobEnabled = false;
+const heroHeading = document.getElementById("hero-heading");
+const revealRadius = 104;
 
 function setupBubbleRevealChars() {
   const targets = document.querySelectorAll(".hero-reveal");
@@ -21,12 +24,10 @@ function setupBubbleRevealChars() {
 }
 
 function updateBubbleReveal() {
-  if (!blob || revealChars.length === 0) return;
-  const blobRect = blob.getBoundingClientRect();
-  const cx = blobRect.left + blobRect.width / 2;
-  const cy = blobRect.top + blobRect.height / 2;
-  const radius = blobRect.width * 0.52;
-  const radiusSq = radius * radius;
+  if (!blobEnabled || revealChars.length === 0) return;
+  const cx = currentX;
+  const cy = currentY;
+  const radiusSq = revealRadius * revealRadius;
 
   revealChars.forEach((ch) => {
     const r = ch.getBoundingClientRect();
@@ -38,6 +39,19 @@ function updateBubbleReveal() {
   });
 }
 
+function isInsideHeroHeadingZone(x, y) {
+  if (!heroHeading) return false;
+  const rect = heroHeading.getBoundingClientRect();
+  const padX = 150;
+  const padY = 110;
+  return (
+    x >= rect.left - padX &&
+    x <= rect.right + padX &&
+    y >= rect.top - padY &&
+    y <= rect.bottom + padY
+  );
+}
+
 setupBubbleRevealChars();
 
 window.addEventListener(
@@ -45,6 +59,7 @@ window.addEventListener(
   (e) => {
     targetX = e.clientX;
     targetY = e.clientY;
+    blobEnabled = isInsideHeroHeadingZone(e.clientX, e.clientY);
   },
   { passive: true }
 );
@@ -52,7 +67,6 @@ window.addEventListener(
 function animateBlob() {
   currentX += (targetX - currentX) * 0.14;
   currentY += (targetY - currentY) * 0.14;
-  blob.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
   updateBubbleReveal();
   requestAnimationFrame(animateBlob);
 }
@@ -74,11 +88,11 @@ setInterval(() => {
   tick++;
   const even = tick % 2 === 0;
 
-  handL.setAttribute("cy", even ? "119" : "116");
-  handR.setAttribute("cy", even ? "116" : "119");
-  armL.setAttribute("y2", even ? "119" : "116");
-  armR.setAttribute("y2", even ? "116" : "119");
-  scursor.setAttribute("opacity", even ? "1" : "0");
+  if (handL) handL.setAttribute("cy", even ? "119" : "116");
+  if (handR) handR.setAttribute("cy", even ? "116" : "119");
+  if (armL) armL.setAttribute("y2", even ? "119" : "116");
+  if (armR) armR.setAttribute("y2", even ? "116" : "119");
+  if (scursor) scursor.setAttribute("opacity", even ? "1" : "0");
 
   const idx = tick % 4;
   const lineEl = document.getElementById(screenLines[idx]);
@@ -86,11 +100,15 @@ setInterval(() => {
     lineEl.setAttribute("width", String(16 + ((tick * 13) % 46)));
   }
 
-  lampGlow.setAttribute("rx", String(20 + (tick % 3)));
+  if (lampGlow) lampGlow.setAttribute("rx", String(20 + (tick % 3)));
 
   const sy = -4 + (tick % 4);
-  steam1.setAttribute("d", `M156 111 Q${158 + (tick % 3)} ${107 + sy} ${156 + (tick % 2)} ${103 + sy}`);
-  steam2.setAttribute("d", `M162 111 Q${164 + (tick % 2)} ${107 + sy} ${162 + (tick % 3)} ${103 + sy}`);
+  if (steam1) {
+    steam1.setAttribute("d", `M156 111 Q${158 + (tick % 3)} ${107 + sy} ${156 + (tick % 2)} ${103 + sy}`);
+  }
+  if (steam2) {
+    steam2.setAttribute("d", `M162 111 Q${164 + (tick % 2)} ${107 + sy} ${162 + (tick % 3)} ${103 + sy}`);
+  }
 }, 200);
 
 setInterval(() => {
