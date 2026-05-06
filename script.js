@@ -176,8 +176,6 @@ function navigateTo(id, btn) {
       overlay.classList.remove("visible");
       target.scrollIntoView({ behavior: "smooth", block: "start" });
       current = id;
-      terminalInput.value = "";
-      setHighlightedOption(-1);
       setTerminalOpen(false);
       if (selectedCommand) {
         setTerminalStatus(`Opening ${selectedCommand}`);
@@ -223,6 +221,8 @@ function runTerminalCommand(rawCommand) {
     return;
   }
   const button = terminalButtons.find((item) => item.dataset.command === match.label) || null;
+  terminalInput.value = "";
+  setHighlightedOption(-1);
   setTerminalOpen(false);
   navigateTo(match.id, button);
 }

@@ -63,34 +63,34 @@
           </div>
           <div class="hero-right">
             <div class="terminal-launcher" aria-label="Portfolio navigation terminal">
-              <div class="terminal-chrome" aria-hidden="true">
-                <span class="terminal-dot terminal-dot-r"></span>
-                <span class="terminal-dot terminal-dot-y"></span>
-                <span class="terminal-dot terminal-dot-g"></span>
-                <span class="terminal-title">portfolio-cli</span>
-              </div>
-              <div class="terminal-body">
-                <div class="terminal-input-stack">
-                  <label class="terminal-input-row" for="terminal-command">
-                    <span class="terminal-prompt">matthew@portfolio:~$</span>
-                    <input
-                      id="terminal-command"
-                      class="terminal-input"
-                      type="text"
-                      autocomplete="off"
-                      spellcheck="false"
-                      placeholder="/projects"
-                      aria-controls="terminal-options"
-                      aria-expanded="false"
-                    />
-                  </label>
-                  <div id="terminal-options" class="terminal-options" role="listbox" aria-label="Available portfolio commands">
-                    <button class="terminal-option" type="button" data-command="/projects" data-target="work">/projects</button>
-                    <button class="terminal-option" type="button" data-command="/experiences" data-target="exp">/experiences</button>
-                    <button class="terminal-option" type="button" data-command="/about" data-target="about">/about</button>
-                  </div>
+              <div class="terminal-input-stack">
+                <label class="terminal-input-row" for="terminal-command">
+                  <span class="terminal-prompt">matthew@portfolio:~$</span>
+                  <input
+                    id="terminal-command"
+                    class="terminal-input"
+                    type="text"
+                    autocomplete="off"
+                    spellcheck="false"
+                    placeholder="/projects"
+                    aria-controls="terminal-options"
+                    aria-expanded="false"
+                  />
+                </label>
+                <div id="terminal-options" class="terminal-options" role="listbox" aria-label="Available portfolio commands">
+                  <button class="terminal-option" type="button" data-command="/projects" data-target="work">
+                    <span class="terminal-option-command">/projects</span>
+                    <span class="terminal-option-detail">browse featured builds and shipped work</span>
+                  </button>
+                  <button class="terminal-option" type="button" data-command="/experiences" data-target="exp">
+                    <span class="terminal-option-command">/experiences</span>
+                    <span class="terminal-option-detail">see engineering roles and product work</span>
+                  </button>
+                  <button class="terminal-option" type="button" data-command="/about" data-target="about">
+                    <span class="terminal-option-command">/about</span>
+                    <span class="terminal-option-detail">read a short intro and current focus</span>
+                  </button>
                 </div>
-                <div id="terminal-status" class="terminal-status" aria-live="polite">Available commands: `/projects`, `/experiences`, `/about`</div>
               </div>
             </div>
           </div>
