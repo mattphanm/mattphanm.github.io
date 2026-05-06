@@ -91,10 +91,10 @@ body::after {
 
 .nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  gap: 26px;
-  padding: 22px 40px 8px;
+  gap: 20px;
+  padding: 20px 28px 6px;
   position: relative;
   z-index: 12;
 }
@@ -115,10 +115,11 @@ body::after {
 .nav-link {
   color: #1f2229;
   text-decoration: none;
-  font-size: 21px;
+  font-size: 16px;
   font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1;
+  padding: 6px 8px;
 }
 
 .nav-link:hover {
@@ -128,20 +129,21 @@ body::after {
 .nav-resume {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  height: 68px;
-  padding: 0 26px;
+  gap: 10px;
+  height: 50px;
+  padding: 0 18px;
   border: 1px solid rgba(182, 191, 204, 0.82);
-  border-radius: 14px;
+  border-radius: 12px;
   color: #23262d;
   background: rgba(255, 255, 255, 0.62);
   text-decoration: none;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
+  margin-left: 8px;
 }
 
 .nav-resume-icon {
-  font-size: 24px;
+  font-size: 17px;
   line-height: 1;
   display: inline-flex;
 }
@@ -500,7 +502,7 @@ body::after {
 .terminal-launcher {
   position: relative;
   width: 100%;
-  max-width: none;
+  max-width: 620px;
   color: var(--fg);
   overflow: visible;
   font-family: "Fira Code", monospace;
@@ -974,20 +976,22 @@ body::after {
 @media (max-width: 640px) {
   .nav {
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     padding: 14px 12px 6px;
     flex-wrap: wrap;
   }
 
   .nav-link {
-    font-size: 14px;
+    font-size: 13px;
+    padding: 4px 6px;
   }
 
   .nav-resume {
-    height: 42px;
+    height: 40px;
     padding: 0 12px;
-    font-size: 14px;
+    font-size: 13px;
     border-radius: 10px;
+    margin-left: 0;
   }
 
   .nav-resume-icon {
