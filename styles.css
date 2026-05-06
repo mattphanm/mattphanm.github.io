@@ -9,14 +9,17 @@
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 20px;
+  --header-h: 88px;
 }
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
+  scroll-snap-type: y mandatory;
 }
 
 body {
-  scroll-snap-type: y mandatory;
+  min-height: 100%;
 }
 
 *, *::before, *::after {
@@ -71,6 +74,16 @@ body::after {
   padding: 0 0 80px;
   position: relative;
   z-index: 1;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(8px);
 }
 
 #blob {
@@ -308,9 +321,14 @@ body::after {
   grid-template-columns: minmax(520px, 0.9fr) minmax(620px, 1fr);
   gap: 28px;
   align-items: center;
-  padding: 24px 40px 0;
-  min-height: calc(100vh - 96px);
+  padding: calc(var(--header-h) + 24px) 40px 0;
+  min-height: 100vh;
   position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.snap-section {
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
@@ -731,8 +749,8 @@ body::after {
 
 .section {
   display: block;
-  padding: 40px 40px 0;
-  scroll-margin-top: 96px;
+  padding: calc(var(--header-h) + 40px) 40px 0;
+  scroll-margin-top: 0;
   min-height: 100vh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
@@ -865,6 +883,54 @@ body::after {
   font-size: 13px;
   color: var(--subtle);
   line-height: 1.65;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.exp-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(182, 191, 204, 0.5);
+  padding: 22px;
+  min-height: 220px;
+  box-shadow: 0 10px 24px rgba(22, 24, 28, 0.03);
+}
+
+.exp-a { background: #e8f0eb; }
+.exp-b { background: #ede8f0; }
+.exp-c { background: #e8edf0; }
+
+.exp-date {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #555d66;
+  margin-bottom: 12px;
+}
+
+.exp-role {
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+  color: #1f2229;
+}
+
+.exp-org {
+  font-size: 13px;
+  font-weight: 700;
+  color: #3b4150;
+  margin-bottom: 10px;
+}
+
+.exp-desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #2f3440;
 }
 
 .about-grid {
@@ -1109,6 +1175,10 @@ body::after {
   .titem {
     grid-template-columns: 1fr;
     gap: 4px;
+  }
+
+  .experience-grid {
+    grid-template-columns: 1fr;
   }
 
   .footer {
