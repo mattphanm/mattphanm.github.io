@@ -28,31 +28,31 @@
   <div id="main-content">
     <div class="page">
       <header>
-        <nav class="nav">
-          <span class="nav-name">Matthew Phan</span>
-          <span class="nav-meta">CS · Cal Poly SLO · 2027</span>
-          <section class="tech-strip" aria-label="Tech stack">
-            <span class="tech-item"><i class="tech-icon devicon-python-plain"></i>Python</span>
-            <span class="tech-item"><i class="tech-icon devicon-typescript-plain"></i>TypeScript</span>
-            <span class="tech-item"><i class="tech-icon devicon-azuresqldatabase-plain"></i>SQL</span>
-            <span class="tech-item"><i class="tech-icon devicon-react-original"></i>React</span>
-            <span class="tech-item"><i class="tech-icon devicon-vitejs-plain"></i>Vite</span>
-            <span class="tech-item"><i class="tech-icon devicon-github-original"></i>GitHub</span>
-            <span class="tech-item"><i class="tech-icon devicon-stackoverflow-plain"></i>Full-Stack</span>
-            <span class="tech-item"><i class="tech-icon devicon-jira-plain"></i>AGILE</span>
-            <span class="tech-item"><i class="tech-icon devicon-fastapi-plain"></i>REST APIs</span>
-            <span class="tech-item"><i class="tech-icon devicon-json-plain"></i>JSON</span>
-            <span class="tech-item"><i class="tech-icon devicon-html5-plain"></i>HTML</span>
-            <span class="tech-item"><i class="tech-icon devicon-css3-plain"></i>CSS</span>
-            <span class="tech-item"><i class="tech-icon devicon-nodejs-plain"></i>Node</span>
-            <span class="tech-item"><i class="tech-icon devicon-express-original"></i>Express.js</span>
-          </section>
+        <nav class="nav" aria-label="Primary">
+          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#about">Skills</a>
+          <a class="nav-link" href="#work">Projects</a>
+          <a class="nav-link" href="mailto:matthewphanm@gmail.com">Contact</a>
+          <a class="nav-resume" href="#" aria-label="Download resume">
+            <span class="nav-resume-icon">↓</span>
+            <span>Resume</span>
+          </a>
         </nav>
       </header>
 
       <main>
         <section class="hero-wrap" aria-labelledby="hero-heading">
           <div class="hero-left">
+            <div class="hero-profile" aria-label="Portrait of Matthew Phan">
+              <div class="hero-avatar-shell">
+                <img
+                  src="assets/matthew-pfp-web.png"
+                  alt="Portrait of Matthew Phan"
+                  class="hero-avatar"
+                  loading="eager"
+                />
+              </div>
+            </div>
             <p class="hero-name">Matthew Phan</p>
             <p class="hero-eyebrow">Software Engineer · Open to Work</p>
             <h1 class="hero-heading" id="hero-heading">
@@ -62,6 +62,28 @@
             </h1>
           </div>
           <div class="hero-right">
+            <section class="tech-strip" aria-label="Tech stack">
+              <div class="tech-strip-head">
+                <span class="tech-strip-glyph">&lt;/&gt;</span>
+                <h2 class="tech-strip-title">Tech Stack</h2>
+              </div>
+              <div class="tech-strip-grid">
+                <span class="tech-item tech-python"><i class="tech-icon devicon-python-plain"></i>Python</span>
+                <span class="tech-item tech-ts"><i class="tech-icon devicon-typescript-plain"></i>TypeScript</span>
+                <span class="tech-item tech-sql"><i class="tech-icon devicon-azuresqldatabase-plain"></i>SQL</span>
+                <span class="tech-item tech-react"><i class="tech-icon devicon-react-original"></i>React</span>
+                <span class="tech-item tech-vite"><i class="tech-icon devicon-vitejs-plain"></i>Vite</span>
+                <span class="tech-item tech-github"><i class="tech-icon devicon-github-original"></i>GitHub</span>
+                <span class="tech-item tech-fullstack"><i class="tech-icon devicon-stackoverflow-plain"></i>Full-Stack</span>
+                <span class="tech-item tech-node"><i class="tech-icon devicon-nodejs-plain"></i>Node</span>
+                <span class="tech-item tech-express"><i class="tech-icon devicon-express-original"></i>Express.js</span>
+                <span class="tech-item tech-rest"><i class="tech-icon devicon-fastapi-plain"></i>REST APIs</span>
+                <span class="tech-item tech-html"><i class="tech-icon devicon-html5-plain"></i>HTML</span>
+                <span class="tech-item tech-css"><i class="tech-icon devicon-css3-plain"></i>CSS</span>
+                <span class="tech-item tech-json"><i class="tech-icon devicon-json-plain"></i>JSON</span>
+                <span class="tech-item tech-agile"><i class="tech-icon devicon-jira-plain"></i>AGILE</span>
+              </div>
+            </section>
             <div class="terminal-launcher" aria-label="Portfolio navigation terminal">
               <div class="terminal-input-stack">
                 <label class="terminal-input-row" for="terminal-command">
@@ -76,6 +98,7 @@
                     aria-controls="terminal-options"
                     aria-expanded="false"
                   />
+                  <span id="terminal-caret-box" class="terminal-caret-box" aria-hidden="true"></span>
                 </label>
                 <div id="terminal-options" class="terminal-options" role="listbox" aria-label="Available portfolio commands">
                   <button class="terminal-option" type="button" data-command="/projects" data-target="work">

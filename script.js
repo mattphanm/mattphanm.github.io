@@ -6,7 +6,10 @@ let currentY = targetY;
 let revealChars = [];
 let blobEnabled = false;
 const heroHeading = document.getElementById("hero-heading");
-const revealRadius = 104;
+const markerRadius = 112;
+const markerFeather = 54;
+const inkDecayPerSecond = 0.58;
+let lastFrameTime = performance.now();
 
 function setupBubbleRevealChars() {
   const targets = document.querySelectorAll(".hero-reveal");
@@ -18,24 +21,39 @@ function setupBubbleRevealChars() {
       span.className = "hero-reveal-char";
       span.textContent = ch === " " ? "\u00A0" : ch;
       target.appendChild(span);
-      if (ch !== " ") revealChars.push(span);
+      if (ch !== " ") {
+        revealChars.push({ el: span, x: 0, y: 0, ink: 0, visible: false });
+      }
     }
   });
 }
 
-function updateBubbleReveal() {
-  if (!blobEnabled || revealChars.length === 0) return;
-  const cx = currentX;
-  const cy = currentY;
-  const radiusSq = revealRadius * revealRadius;
+function cacheRevealCharMetrics() {
+  revealChars.forEach((glyph) => {
+    const r = glyph.el.getBoundingClientRect();
+    glyph.x = r.left + r.width / 2;
+    glyph.y = r.top + r.height / 2;
+  });
+}
 
-  revealChars.forEach((ch) => {
-    const r = ch.getBoundingClientRect();
-    const x = r.left + r.width / 2;
-    const y = r.top + r.height / 2;
-    const dx = x - cx;
-    const dy = y - cy;
-    ch.classList.toggle("in-bubble", dx * dx + dy * dy <= radiusSq);
+function paintMarker(cx, cy) {
+  const full = markerRadius;
+  const soft = markerRadius + markerFeather;
+
+  revealChars.forEach((glyph) => {
+    const dx = glyph.x - cx;
+    const dy = glyph.y - cy;
+    const distance = Math.hypot(dx, dy);
+    if (distance > soft) return;
+
+    let add = 0;
+    if (distance <= full) {
+      add = 0.22;
+    } else {
+      const t = 1 - (distance - full) / markerFeather;
+      add = Math.max(0, t) * 0.18;
+    }
+    glyph.ink = Math.min(1, glyph.ink + add);
   });
 }
 
@@ -53,6 +71,7 @@ function isInsideHeroHeadingZone(x, y) {
 }
 
 setupBubbleRevealChars();
+cacheRevealCharMetrics();
 
 window.addEventListener(
   "pointermove",
@@ -64,10 +83,44 @@ window.addEventListener(
   { passive: true }
 );
 
+window.addEventListener(
+  "resize",
+  () => {
+    cacheRevealCharMetrics();
+  },
+  { passive: true }
+);
+
 function animateBlob() {
+  const now = performance.now();
+  const dt = (now - lastFrameTime) / 1000;
+  lastFrameTime = now;
+
   currentX += (targetX - currentX) * 0.14;
   currentY += (targetY - currentY) * 0.14;
-  updateBubbleReveal();
+  if (blobEnabled) paintMarker(currentX, currentY);
+
+  revealChars.forEach((glyph) => {
+    glyph.ink = Math.max(0, glyph.ink - inkDecayPerSecond * dt);
+    const active = glyph.ink > 0.01;
+
+    if (active) {
+      glyph.el.style.setProperty("--ink-alpha", (0.2 + glyph.ink * 0.74).toFixed(3));
+      glyph.el.style.setProperty("--ink-glow", (glyph.ink * 9).toFixed(2));
+      glyph.el.style.setProperty("--ink-strength", glyph.ink.toFixed(3));
+      if (!glyph.visible) {
+        glyph.el.classList.add("in-bubble");
+        glyph.visible = true;
+      }
+    } else if (glyph.visible) {
+      glyph.el.classList.remove("in-bubble");
+      glyph.el.style.removeProperty("--ink-alpha");
+      glyph.el.style.removeProperty("--ink-glow");
+      glyph.el.style.removeProperty("--ink-strength");
+      glyph.visible = false;
+    }
+  });
+
   requestAnimationFrame(animateBlob);
 }
 
@@ -100,6 +153,7 @@ let busy = false;
 let current = null;
 let activeTerminalIndex = -1;
 const terminalInput = document.getElementById("terminal-command");
+const terminalCaretBox = document.getElementById("terminal-caret-box");
 const terminalOptions = document.getElementById("terminal-options");
 const terminalStatus = document.getElementById("terminal-status");
 const terminalButtons = Array.from(document.querySelectorAll(".terminal-option"));
@@ -115,6 +169,26 @@ function setTerminalOpen(open) {
   if (!terminalOptions || !terminalInput) return;
   terminalOptions.classList.toggle("open", open);
   terminalInput.setAttribute("aria-expanded", open ? "true" : "false");
+}
+
+function updateTerminalCaretBox() {
+  if (!terminalInput || !terminalCaretBox) return;
+  const row = terminalInput.closest(".terminal-input-row");
+  if (!row) return;
+
+  const inputRect = terminalInput.getBoundingClientRect();
+  const rowRect = row.getBoundingClientRect();
+  const style = window.getComputedStyle(terminalInput);
+  const canvas = updateTerminalCaretBox.canvas || (updateTerminalCaretBox.canvas = document.createElement("canvas"));
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  ctx.font = style.font;
+  const cursorIndex = terminalInput.selectionStart ?? terminalInput.value.length;
+  const textBeforeCursor = terminalInput.value.slice(0, cursorIndex);
+  const textWidth = ctx.measureText(textBeforeCursor).width;
+  const left = Math.max(0, inputRect.left - rowRect.left + textWidth - terminalInput.scrollLeft - 2);
+  terminalCaretBox.style.left = `${left}px`;
 }
 
 function setTerminalStatus(message) {
@@ -228,9 +302,12 @@ function runTerminalCommand(rawCommand) {
 }
 
 if (terminalInput && terminalOptions) {
+  updateTerminalCaretBox();
+
   terminalInput.addEventListener("focus", () => {
     setTerminalOpen(true);
     setTerminalStatus("Select a command or press Enter.");
+    updateTerminalCaretBox();
   });
 
   terminalInput.addEventListener("input", () => {
@@ -238,6 +315,7 @@ if (terminalInput && terminalOptions) {
     const hasSlash = value.startsWith("/");
     setTerminalOpen(hasSlash || value.length === 0);
     setActiveCommand(value);
+    updateTerminalCaretBox();
   });
 
   terminalInput.addEventListener("keydown", (event) => {
@@ -267,13 +345,21 @@ if (terminalInput && terminalOptions) {
       setTerminalOpen(false);
       terminalInput.blur();
     }
+    requestAnimationFrame(updateTerminalCaretBox);
   });
+
+  terminalInput.addEventListener("click", updateTerminalCaretBox);
+  terminalInput.addEventListener("keyup", updateTerminalCaretBox);
+  terminalInput.addEventListener("blur", updateTerminalCaretBox);
+
+  window.addEventListener("resize", updateTerminalCaretBox, { passive: true });
 
   terminalButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const command = button.dataset.command || "";
       terminalInput.value = command;
       runTerminalCommand(command);
+      updateTerminalCaretBox();
     });
   });
 
