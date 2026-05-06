@@ -73,63 +73,6 @@ function animateBlob() {
 
 requestAnimationFrame(animateBlob);
 
-let tick = 0;
-const handL = document.getElementById("hand-l");
-const handR = document.getElementById("hand-r");
-const armL = document.getElementById("arm-l");
-const armR = document.getElementById("arm-r");
-const scursor = document.getElementById("scursor");
-const lampGlow = document.getElementById("lamp-glow");
-const steam1 = document.getElementById("steam1");
-const steam2 = document.getElementById("steam2");
-const screenLines = ["sl1", "sl2", "sl3", "sl4"];
-
-setInterval(() => {
-  tick++;
-  const even = tick % 2 === 0;
-
-  if (handL) handL.setAttribute("cy", even ? "119" : "116");
-  if (handR) handR.setAttribute("cy", even ? "116" : "119");
-  if (armL) armL.setAttribute("y2", even ? "119" : "116");
-  if (armR) armR.setAttribute("y2", even ? "116" : "119");
-  if (scursor) scursor.setAttribute("opacity", even ? "1" : "0");
-
-  const idx = tick % 4;
-  const lineEl = document.getElementById(screenLines[idx]);
-  if (lineEl) {
-    lineEl.setAttribute("width", String(16 + ((tick * 13) % 46)));
-  }
-
-  if (lampGlow) lampGlow.setAttribute("rx", String(20 + (tick % 3)));
-
-  const sy = -4 + (tick % 4);
-  if (steam1) {
-    steam1.setAttribute("d", `M156 111 Q${158 + (tick % 3)} ${107 + sy} ${156 + (tick % 2)} ${103 + sy}`);
-  }
-  if (steam2) {
-    steam2.setAttribute("d", `M162 111 Q${164 + (tick % 2)} ${107 + sy} ${162 + (tick % 3)} ${103 + sy}`);
-  }
-}, 200);
-
-setInterval(() => {
-  const t = Date.now();
-  const ev = Math.round(t / 200) % 2 === 0;
-  const ol = document.getElementById("ohl");
-  const or_ = document.getElementById("ohr");
-  if (ol) {
-    ol.setAttribute("cy", ev ? "87" : "84");
-  }
-  if (or_) {
-    or_.setAttribute("cy", ev ? "84" : "87");
-  }
-  const os = ["osl1", "osl2", "osl3", "osl4"];
-  const oi = Math.round(t / 200) % 4;
-  const oel = document.getElementById(os[oi]);
-  if (oel) {
-    oel.setAttribute("width", String(14 + ((Math.round(t / 200) * 7) % 26)));
-  }
-}, 200);
-
 const scripts = {
   work: [
     { txt: '<span class="c-orange">import</span> { projects } <span class="c-orange">from</span> <span class="c-green">"./work"</span>', d: 0 },
@@ -155,11 +98,68 @@ const scripts = {
 
 let busy = false;
 let current = null;
+let activeTerminalIndex = -1;
+const terminalInput = document.getElementById("terminal-command");
+const terminalOptions = document.getElementById("terminal-options");
+const terminalStatus = document.getElementById("terminal-status");
+const terminalButtons = Array.from(document.querySelectorAll(".terminal-option"));
+const commandMap = {
+  "/projects": { id: "work", label: "/projects" },
+  "/project": { id: "work", label: "/projects" },
+  "/experiences": { id: "exp", label: "/experiences" },
+  "/experience": { id: "exp", label: "/experiences" },
+  "/about": { id: "about", label: "/about" }
+};
+
+function setTerminalOpen(open) {
+  if (!terminalOptions || !terminalInput) return;
+  terminalOptions.classList.toggle("open", open);
+  terminalInput.setAttribute("aria-expanded", open ? "true" : "false");
+}
+
+function setTerminalStatus(message) {
+  if (terminalStatus) terminalStatus.textContent = message;
+}
+
+function setHighlightedOption(index) {
+  activeTerminalIndex = index;
+  terminalButtons.forEach((button, buttonIndex) => {
+    const isActive = buttonIndex === index;
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-selected", isActive ? "true" : "false");
+  });
+}
+
+function setActiveCommand(command) {
+  const index = terminalButtons.findIndex((button) => button.dataset.command === command);
+  setHighlightedOption(index);
+}
+
+function moveTerminalSelection(direction) {
+  if (!terminalButtons.length) return;
+  const nextIndex =
+    activeTerminalIndex === -1
+      ? direction > 0
+        ? 0
+        : terminalButtons.length - 1
+      : (activeTerminalIndex + direction + terminalButtons.length) % terminalButtons.length;
+  setHighlightedOption(nextIndex);
+  terminalInput.value = terminalButtons[nextIndex].dataset.command || "";
+}
 
 function navigateTo(id, btn) {
-  if (busy || id === current) return;
+  if (busy) return;
   const target = document.getElementById(id);
   if (!target) return;
+  const selectedCommand = btn?.dataset.command || Object.keys(commandMap).find((command) => commandMap[command].id === id);
+  const isCurrent = id === current;
+  if (selectedCommand) setActiveCommand(selectedCommand);
+  if (isCurrent) {
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    setTerminalOpen(false);
+    setTerminalStatus(`Already at ${selectedCommand || id}`);
+    return;
+  }
   busy = true;
 
   const overlay = document.getElementById("code-overlay");
@@ -174,10 +174,14 @@ function navigateTo(id, btn) {
   function finishNavigate() {
     setTimeout(() => {
       overlay.classList.remove("visible");
-      document.querySelectorAll(".sec-btn").forEach((b) => b.classList.remove("active"));
-      if (btn) btn.classList.add("active");
       target.scrollIntoView({ behavior: "smooth", block: "start" });
       current = id;
+      terminalInput.value = "";
+      setHighlightedOption(-1);
+      setTerminalOpen(false);
+      if (selectedCommand) {
+        setTerminalStatus(`Opening ${selectedCommand}`);
+      }
       busy = false;
     }, 280);
   }
@@ -207,6 +211,79 @@ function navigateTo(id, btn) {
   }
 
   nextLine();
+}
+
+function runTerminalCommand(rawCommand) {
+  const command = rawCommand.trim().toLowerCase();
+  const match = commandMap[command];
+  if (!match) {
+    setTerminalStatus(`Unknown command: ${rawCommand.trim() || "empty input"}`);
+    setHighlightedOption(-1);
+    setTerminalOpen(true);
+    return;
+  }
+  const button = terminalButtons.find((item) => item.dataset.command === match.label) || null;
+  setTerminalOpen(false);
+  navigateTo(match.id, button);
+}
+
+if (terminalInput && terminalOptions) {
+  terminalInput.addEventListener("focus", () => {
+    setTerminalOpen(true);
+    setTerminalStatus("Select a command or press Enter.");
+  });
+
+  terminalInput.addEventListener("input", () => {
+    const value = terminalInput.value.trim().toLowerCase();
+    const hasSlash = value.startsWith("/");
+    setTerminalOpen(hasSlash || value.length === 0);
+    setActiveCommand(value);
+  });
+
+  terminalInput.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setTerminalOpen(true);
+      moveTerminalSelection(1);
+      return;
+    }
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setTerminalOpen(true);
+      moveTerminalSelection(-1);
+      return;
+    }
+    if (event.key === "Enter") {
+      event.preventDefault();
+      if (activeTerminalIndex >= 0) {
+        const command = terminalButtons[activeTerminalIndex]?.dataset.command || terminalInput.value;
+        terminalInput.value = command;
+        runTerminalCommand(command);
+        return;
+      }
+      runTerminalCommand(terminalInput.value);
+    }
+    if (event.key === "Escape") {
+      setTerminalOpen(false);
+      terminalInput.blur();
+    }
+  });
+
+  terminalButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const command = button.dataset.command || "";
+      terminalInput.value = command;
+      runTerminalCommand(command);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    const insideTerminal =
+      target instanceof Element &&
+      (target.closest(".terminal-launcher") || target === terminalInput);
+    if (!insideTerminal) setTerminalOpen(false);
+  });
 }
 
 function toggleDetail(id) {
