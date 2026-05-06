@@ -148,7 +148,7 @@ body::after {
 
 .tech-strip {
   width: 100%;
-  max-width: 700px;
+  max-width: 620px;
   border: 1px solid rgba(182, 191, 204, 0.46);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.56);
