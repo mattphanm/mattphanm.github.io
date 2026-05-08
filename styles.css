@@ -1043,19 +1043,73 @@ header {
   border: 1px solid rgba(80, 74, 67, 0.08);
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 16px 34px rgba(31, 32, 37, 0.035);
+  box-shadow: 0 0 0 var(--experience-hover, rgba(129, 129, 129, 0.82));
+  transform: translateY(0) translateX(0);
+  transition:
+    background-size 0.2s ease 0.4s,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease 0.4s,
+    transform 0.2s ease 0.4s;
+}
+
+.experience-card::before,
+.experience-card::after {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.experience-card::before {
+  inset: -1px;
+  border: 3px solid var(--experience-hover, rgba(129, 129, 129, 0.82));
+  background: transparent;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+}
+
+.experience-card::after {
+  display: none;
+}
+
+.experience-card:hover {
+  background-size: 3px 100%, 100% 3px, auto;
+  border-color: color-mix(in srgb, var(--experience-hover, rgb(129, 129, 129)) 24%, transparent);
+  box-shadow: 20px 20px 0 var(--experience-hover, rgba(129, 129, 129, 0.82));
+  transform: translateY(-10px) translateX(-10px);
+}
+
+.experience-card:hover::before {
+  transform: scaleX(1);
+}
+
+.experience-card:hover::after {
+  transform: none;
 }
 
 .exp-lavender {
-  background: rgba(232, 230, 240, 0.58);
+  --experience-hover: rgb(165, 157, 190);
+  background:
+    linear-gradient(var(--experience-hover), var(--experience-hover)) left bottom / 3px 0 no-repeat,
+    linear-gradient(var(--experience-hover), var(--experience-hover)) right bottom / 0 3px no-repeat,
+    rgba(232, 230, 240, 0.58);
 }
 
 .exp-mint {
-  background: rgba(224, 237, 232, 0.58);
+  --experience-hover: rgb(143, 177, 164);
+  background:
+    linear-gradient(var(--experience-hover), var(--experience-hover)) left bottom / 3px 0 no-repeat,
+    linear-gradient(var(--experience-hover), var(--experience-hover)) right bottom / 0 3px no-repeat,
+    rgba(224, 237, 232, 0.58);
 }
 
 .exp-cream {
-  background: rgba(240, 237, 230, 0.58);
+  --experience-hover: rgb(187, 169, 132);
+  background:
+    linear-gradient(var(--experience-hover), var(--experience-hover)) left bottom / 3px 0 no-repeat,
+    linear-gradient(var(--experience-hover), var(--experience-hover)) right bottom / 0 3px no-repeat,
+    rgba(240, 237, 230, 0.58);
 }
 
 .experience-pill {
