@@ -886,7 +886,8 @@ header {
   z-index: 1;
   pointer-events: none;
   background: rgb(129, 129, 129);
-  transition: transform 0.2s ease;
+  transition:
+    transform 0.2s ease;
 }
 
 .project-card::before {
