@@ -848,6 +848,134 @@ header {
   transform: translate(4px, -2px);
 }
 
+.projects-shell {
+  min-height: calc(100vh - var(--header-h) - 80px);
+}
+
+.project-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+.project-card {
+  position: relative;
+  min-height: 320px;
+  padding: 50px 34px 44px;
+  border: 1px solid rgba(80, 74, 67, 0.12);
+  border-radius: 0;
+  background:
+    linear-gradient(rgb(129, 129, 129), rgb(129, 129, 129)) left bottom / 3px 0 no-repeat,
+    linear-gradient(rgb(129, 129, 129), rgb(129, 129, 129)) right bottom / 0 3px no-repeat,
+    rgba(255, 255, 255, 0.92);
+  color: #20242b;
+  box-shadow: 0 0 0 rgb(129, 129, 129);
+  transform: translateY(0) translateX(0);
+  transition:
+    background-size 0.2s ease 0.4s,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease 0.4s,
+    transform 0.2s ease 0.4s;
+}
+
+.project-card::before,
+.project-card::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background: rgb(129, 129, 129);
+  transition: transform 0.2s ease;
+}
+
+.project-card::before {
+  top: -1px;
+  left: -1px;
+  width: calc(100% + 2px);
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+}
+
+.project-card::after {
+  top: -1px;
+  right: -1px;
+  width: 3px;
+  height: calc(100% + 2px);
+  transform: scaleY(0);
+  transform-origin: 100% 0;
+  transition-delay: 0.2s;
+}
+
+.project-card:hover {
+  background-size: 3px 100%, 100% 3px, auto;
+  border-color: rgba(129, 129, 129, 0.12);
+  box-shadow: 20px 20px 0 rgb(129, 129, 129);
+  transform: translateY(-10px) translateX(-10px);
+}
+
+.project-card:hover::before {
+  transform: scaleX(1);
+}
+
+.project-card:hover::after {
+  transform: scaleY(1);
+}
+
+.project-card-title {
+  font-family: "Syne", sans-serif;
+  font-size: 28px;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin-bottom: 8px;
+}
+
+.project-card-meta {
+  color: #46515d;
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 18px;
+}
+
+.project-card-date {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid rgba(80, 74, 67, 0.42);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.64);
+  color: #46515d;
+  font-family: "Fira Code", monospace;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.project-card-divider {
+  height: 1px;
+  margin: 30px 0 30px;
+  background: rgba(80, 74, 67, 0.1);
+}
+
+.project-card-list {
+  display: grid;
+  gap: 10px;
+  padding-left: 40px;
+  color: #46515d;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.project-card-list li::marker {
+  color: rgba(70, 81, 93, 0.78);
+  font-size: 0.8em;
+}
+
 .timeline {
   margin-top: 4px;
 }
@@ -1181,6 +1309,10 @@ header {
 }
 
 @media (max-width: 1024px) {
+  .project-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .experience-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1321,9 +1453,38 @@ header {
   }
 
   .work-grid,
+  .project-card-grid,
   .experience-grid,
   .about-grid {
     grid-template-columns: 1fr;
+  }
+
+  .projects-shell {
+    min-height: auto;
+  }
+
+  .project-card {
+    min-height: auto;
+    padding: 36px 28px 34px;
+  }
+
+  .project-card-title {
+    font-size: 26px;
+  }
+
+  .project-card-date {
+    white-space: normal;
+    line-height: 1.35;
+    padding: 8px 10px;
+  }
+
+  .project-card-divider {
+    margin: 26px 0 24px;
+  }
+
+  .project-card-list {
+    padding-left: 24px;
+    font-size: 15px;
   }
 
   .about-photo {
